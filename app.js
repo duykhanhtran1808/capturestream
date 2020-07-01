@@ -164,9 +164,9 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true}).then(function (
         recordVid.srcObject = mediaStreamObj
         recordVid.play()
         
-        let outputStream = outputVid.captureStream(30);
-        if (outputStream) {
-            localstream = outputStream;
+        
+        if (stream) {
+            localstream = stream;
         }
 
         let options = {
