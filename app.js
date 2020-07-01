@@ -151,8 +151,9 @@ recordVid.addEventListener('play', function() {
   }, 0);
 
 //Chay ra output video
-let stream = canvas.captureStream(30);
+let stream;
 vidFromServer.onplay = function () {
+    stream = canvas.captureStream(30);
     outputVid.srcObject = stream;
     outputVid.play()
 }
@@ -163,8 +164,9 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true}).then(function (
         recordVid.srcObject = mediaStreamObj
         recordVid.play()
         
-        if (stream) {
-            localstream = stream;
+        let outputStream = outputVid.captureStream(30);
+        if (outputStream) {
+            localstream = outputStream;
         }
 
         let options = {
