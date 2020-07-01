@@ -161,7 +161,7 @@ vidFromServer.onplay = function () {
 }
 
 //Ghi hinh video
-navigator.mediaDevices.getUserMedia({ audio: true, video: false}).then(function (mediaStreamObj) {
+navigator.mediaDevices.getUserMedia({ audio: true, video: true}).then(function (mediaStreamObj) {
     start.addEventListener('click', function (ev) {
         recordVid.srcObject = mediaStreamObj
         recordVid.play()
