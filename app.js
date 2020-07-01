@@ -151,9 +151,8 @@ recordVid.addEventListener('play', function() {
   }, 0);
 
 //Chay ra output video
-let stream;
+let stream = canvas.captureStream(30);
 vidFromServer.onplay = function () {
-    stream = canvas.captureStream(30);
     outputVid.srcObject = stream;
     outputVid.play()
 }
