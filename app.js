@@ -153,18 +153,23 @@ recordVid.addEventListener('play', function() {
 //Chay ra output video
 let stream;
 vidFromServer.onplay = function () {
-    stream = canvas.captureStream(30);
+    if(!stream) {
+        stream = canvas.captureStream(30);
+    }
     outputVid.srcObject = stream;
     outputVid.play()
 }
 
 //Ghi hinh video
-navigator.mediaDevices.getUserMedia({ audio: true, video: true}).then(function (mediaStreamObj) {
+navigator.mediaDevices.getUserMedia({ audio: true, video: false}).then(function (mediaStreamObj) {
     start.addEventListener('click', function (ev) {
         recordVid.srcObject = mediaStreamObj
         recordVid.play()
         
-        
+        if(!stream) {
+            stream = canvas.captureStream(30);
+        }
+
         if (stream) {
             localstream = stream;
         }
